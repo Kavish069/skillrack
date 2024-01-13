@@ -1,0 +1,71 @@
+The runs scored by N batsmen of a cricket team is passed as the input to the program. The program must print the name of the batsman who scored the highest runs. (You can assume that no two batsmen will be the top scorers).
+
+Input Format:
+The first line denotes the value of N.
+Next N lines will contain the name of the batsman and the runs score (both separated by a comma)
+
+Output Format:
+The first line contains the name of the batsman with the top score.
+
+Boundary Conditions:
+2 <= N <= 11
+The length of the names will be from 3 to 100.
+The value of the runs will be from 0 to 500.
+
+Example Input/Output 1:
+Input:
+5
+BatsmanA,45
+BatsmanB,52
+BatsmanC,12
+BatsmanD,9
+BatsmanE,78
+
+Output:
+BatsmanE
+
+program:
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    char s[10][100],v[1001];
+    int n;
+    scanf("%d",&n);
+    int a[n+1],m=0;
+    char h[n+1];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s",v);
+        int t=0,b=0;
+        char d[1001];
+        strcpy(d,v);
+        for(int j=0;d[j]!=NULL;j++){
+            if(isdigit(d[j]))
+            {
+                if(b==0)
+                {
+                    b=j;
+                }
+            t=t*10+(d[j]-48);
+            }
+        }
+        v[b-1]='\0';
+        strcpy(s[i],v);
+        printf("%s ",s[i]);
+        a[i]=t;
+        if(t>m){
+            m=t;
+        }
+    }
+    int p=0;
+    for(int i=0;i<n;i++){
+        if(m==a[i]){
+            p=i;
+            break;
+        }
+    }
+    printf("%s",s[p]);
+    
+}

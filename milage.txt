@@ -1,0 +1,70 @@
+The name and mileage of certain cars is passed as the input. The format is CARNAME@MILEAGE and the input is as a single line, with each car information separated by a space. The program must print the car with the lowest mileage. (Assume no two cars will have the lowest mileage)
+
+Input Format:
+The first line contains the CARNAME@MILEAGE separated by a space.
+
+Output Format:
+The first line contains the name of the car with the lowest mileage.
+
+Boundary Conditions:
+The length of the input string is between 4 to 10000.
+The length of the car name is from 1 to 50.
+
+Example Input/Output 1:
+Input:
+Zantro@16.15 Zity@12.5 Gamry@9.8
+
+Output:
+Gamry
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
+
+int main()
+{
+    char s[10][20];
+    char k[1001];
+    int i=0,a[1001],d,q=0;
+    double t,m=INT_MAX;
+    while(scanf("%s",k)==1){
+        int t=0,c=0,g=0,si=0;
+        for(int j=0;k[j]!=NULL;j++)
+        {
+            if(isdigit(k[j]))
+            {
+                t=t*10+(k[j]-48);
+            }
+            if(k[j]=='.')
+            {
+                c=1;
+            }
+            if(k[j]=='@'){
+                si=j;
+            }
+            if(c==1)
+            { if(isdigit(k[j])){
+                g++;
+            }
+            }
+        }
+        k[si]='\0';
+        printf("%s ",k);
+        strcpy(s[i],k);
+        int x=0;
+        double w=t;
+        while(x<g){
+            w=w*0.1;
+            x++;
+        }
+        if(w<m){
+            m=w;
+            q=i;
+        }
+        i++;
+        
+    }
+   printf("%s",s[q]);
+}
